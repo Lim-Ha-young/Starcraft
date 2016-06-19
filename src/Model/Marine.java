@@ -1,21 +1,11 @@
 package Model;
 
-public class Marine {
+public class Marine extends Unit {
 	
-	public String name;
 	private int hp;//캡슐화를 위한 private선언
 	public int hit;	
 	public boolean isDead=false;
 	
-	// alt + shift + S + R : 모든 속성 setter, getter 생성
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
 	public int getHit() {
 		return hit;
 	}
@@ -49,16 +39,20 @@ public class Marine {
 		}
 	}
 	////////////////////////////////////////
-	
-	
-	public Marine(String name, int hp, int hit){
-		
-		System.out.println("마린이 생성되었습니당.");
-		this.name=name;
-		this.hp=hp;
+	public Marine(int hit,String name){
+		super(100,hit, name);
 		this.hit=hit;
-		
+		this.name=name;
 	}
+	
+//	public Marine(String name, int hp, int hit){
+//		
+//		System.out.println("마린이 생성되었습니당.");
+//		this.name=name;
+//		this.hp=hp;
+//		this.hit=hit;
+//		
+//	}
 	
 	public void Attack(Marine a){
 		
@@ -93,9 +87,9 @@ public void Attack(FireBet a){
 	}
 		
 }
-	public void seeHP(){
-		System.out.println(this.name+"의 HP가 "+this.hp+" 되었습니다.\n");
-	}
+//	public void seeHP(){
+//		System.out.println(this.name+"의 HP가 "+this.hp+" 되었습니다.\n");
+//	}
 	public void Upgrade(){
 		this.hit=this.hit+100;
 		System.out.println(this.name+"의 공격력이 "+this.hit+" 되었습니다.\n");

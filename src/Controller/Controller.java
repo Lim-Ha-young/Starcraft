@@ -10,9 +10,13 @@ public class Controller {
 		
 		Scanner scanner = new Scanner(System.in);
 		
-		Marine m1 = new Marine("m1",1000,100);
-		Marine m2 = new Marine("m2",1000,50);
+		Marine m1 = new Marine(10,"m1");
+		Marine m2 = new Marine(20,"m2");
 		FireBet f = new FireBet("f1",200,10);
+		
+		
+		m1.seeState();
+		m2.seeState();
 		
 		int i = 0;
 		while(i==0){
@@ -28,7 +32,7 @@ public class Controller {
 				m1.Upgrade();
 				break;
 			case 3 :
-				m1.seeHP();
+				m1.seeState();
 				break;
 
 			default :
@@ -42,7 +46,7 @@ public class Controller {
 		
 		m2.Attack(m1);
 		m1.Attack(f);
-		f.seeHP();
+	
 		m1.Attack(f);
 		m1.Attack(f);
 	}

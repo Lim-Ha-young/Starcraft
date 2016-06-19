@@ -51,8 +51,8 @@ public void Attack(FireBet a){
 }
 	
 }
-public void seeHP(){
-	System.out.println(this.name+"의 HP가 "+this.hp+" 되었습니다.\n");
-}
+//public void seeHP(){
+//	System.out.println(this.name+"의 HP가 "+this.hp+" 되었습니다.\n");
+//}
 
 }
