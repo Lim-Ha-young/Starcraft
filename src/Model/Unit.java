@@ -7,36 +7,39 @@ public class Unit {
 	protected String name;
 	public boolean isDead=false;
 	
-	public Unit(int hp, int hit, String name){
+	public Unit(int hp, int hit, String name){//생성자
 		this.hp=hp;
 		this.hit=hit;
 		this.name = name;
 	}
-	public void seeState(){
-		System.out.println(name+"의 HP:"+hp);
-		System.out.println("     HIT:"+hit+"\n");
+	
+	public void seeState(){//상태 보여주기
+		System.out.println(name+"의 HP가"+hp+", HIT이 "+hit+"이 되었습니다.");
+		
 
 	}
-	public void Attack(Unit unit){
+	public void Attack(Unit unit){//공격
 		if(unit.hp<=0){
 			this.isDead=true;
-			System.out.println("죽음");
+			System.out.println(unit.name+"이 죽었습니다.");
 		}
 		else{
-		System.out.println("unit ATTACK!");
+			if(unit.hp<=0){
+				System.out.println("더이상 공격할 수 없습니다.");
+			}
+		System.out.println("\nunit ATTACK!");
 		unit.hp=unit.hp-this.hit;
 		
 		
-		System.out.println(this.name+"이 "+unit.name +"을 공격한당\n");
+		System.out.println(this.name+"이 "+unit.name +"을 공격했습니다.");
 		}
-		if(unit.hp<=0){
-			System.out.println("더이상 공격 ㄴㄴ");
-		}
+		
 		
 	}
 	
-	public void Upgrade(){
+	public void Upgrade(){//업그레이드!
+		System.out.println("\nUPGRADE!");
 		this.hit=this.hit+10;
-		System.out.println(this.name+"의 공격력이 "+this.hit+" 되었습니다.\n");
+		System.out.println(this.name+"의 공격력이 "+this.hit+" 되었습니다.");
 	}
 }
