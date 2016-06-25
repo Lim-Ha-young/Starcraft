@@ -6,19 +6,36 @@ public class Unit {
 	protected int hit;
 	protected String name;
 	public boolean isDead=false;
+	private Coordinate coordinate;//좌표를 unit의 속성으로 넣음
+	
 	
 	public Unit(int hp, int hit, String name){//생성자
 		this.hp=hp;
 		this.hit=hit;
 		this.name = name;
+		coordinate = new Coordinate(0, 0);
 	}
 	
+	
+	public void right() {
+		
+		coordinate.Right();
+		System.out.println(this.name+"의 좌표");
+		
+	}
+	public void down() {
+		coordinate.Down();
+		System.out.println(this.name+"의 좌표");
+	}
+	
+	
 	public void seeState(){//상태 보여주기
-		System.out.println(name+"의 HP가"+hp+", HIT이 "+hit+"이 되었습니다.");
+		System.out.println(name+"의 HP가"+hp+", HIT이 "+hit+"입니다.");
 		
 
 	}
 	public void Attack(Unit unit){//공격
+		if(coordinate.getDistance(unit.coordinate)<=5){
 		if(unit.hp<=0){
 			this.isDead=true;
 			System.out.println(unit.name+"이 죽었습니다.");
@@ -34,7 +51,9 @@ public class Unit {
 		System.out.println(this.name+"이 "+unit.name +"을 공격했습니다.");
 		}
 		
-		
+		}else{
+			System.out.println("거리가 멀어 공격할 수 없습니다.");
+		}
 	}
 	
 	public void Upgrade(){//업그레이드!
