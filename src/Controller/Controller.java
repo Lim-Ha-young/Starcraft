@@ -19,6 +19,9 @@ public class Controller {
 		//call by value
 		//NULL:아무것도 없는 주소를 가지고있다.		
 		
+		
+		
+		
 		//List<Marine> list= new ArrayList<Marine>();//마린을 담을 컨테이너 생성(배열)-탐색좋음
 		//List<Marine> list2 = new LinkedList<Marine>();//링크드 리스트-삽입좋음
 		//////제네릭//////리스튼데 마린을 담을꺼당
