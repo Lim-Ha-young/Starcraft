@@ -17,16 +17,16 @@ public class Controller {
 		//맨앞이 대문자면 "클래스"
 		//call by reference
 		//call by value
-		//NULL:아무것도 없는 주소를 가지고있다.		
-		
-		
-		
+		//NULL:아무것도 없는 주소를 가지고있다.				
 		
 		//List<Marine> list= new ArrayList<Marine>();//마린을 담을 컨테이너 생성(배열)-탐색좋음
 		//List<Marine> list2 = new LinkedList<Marine>();//링크드 리스트-삽입좋음
 		//////제네릭//////리스튼데 마린을 담을꺼당
 		/////제네릭을 안쓰면, 어떤 타입이든 다 넣겠다!But, 명시해주는게 좋다!
 		List<Unit> list= new ArrayList<Unit>();
+		//List<Unit> attackableUnitList=new ArrayList<Unit>();
+		
+		
 		Scanner scanner = new Scanner(System.in);
 		
 		
@@ -72,12 +72,18 @@ public class Controller {
 				list.add(f);						
 				break;
 				
-			case 3 :
-			System.out.println("총 "+list.size()+"마리가 있습니다.");
-							
-			for(Unit unit : list) {					
-				unit.seeState();		
-			}
+			case 3 :		
+				
+			int a=0;
+			for(Unit unit : list) {	
+				if((unit.getHp())>0){
+				unit.seeState();
+				a++;
+				}				
+				}
+			System.out.println("총 "+a+"마리가 있습니다.");
+			
+			
 			break;
 			
 			case 4 :

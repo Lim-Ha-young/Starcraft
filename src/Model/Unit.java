@@ -14,9 +14,20 @@ public class Unit {
 		this.hit=hit;
 		this.name = name;
 		coordinate = new Coordinate(0, 0);
+	}	
+	
+	
+	public int getHp() {
+		return hp;
 	}
-	
-	
+
+
+	public void setHp(int hp) {
+		this.hp = hp;
+	}
+
+
+
 	public void right() {		
 		System.out.println(this.name+"의 좌표");
 		coordinate.Right();
@@ -27,12 +38,20 @@ public class Unit {
 		coordinate.Down();
 		}
 	
+	
 	public void seeState(){//상태 보여주기
+		if(hp>=0){
 		System.out.println(name+"의 HP:"+hp+", HIT:"+hit+", "
 				+ "좌표 :("+coordinate.getX()+","+coordinate.getY()+")");
-		
-
+		}
+		else{
+			System.out.println(name+"이 죽었습니다.");
+		}
 	}
+	
+	
+	
+	
 	public void Attack(Unit unit){//공격
 		if(coordinate.getDistance(unit.coordinate)<=5){
 			
