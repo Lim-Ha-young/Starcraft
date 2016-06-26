@@ -17,25 +17,25 @@ public class Unit {
 	}
 	
 	
-	public void right() {
-		
+	public void right() {		
+		System.out.println(this.name+"의 좌표");
 		coordinate.Right();
-		System.out.println(this.name+"의 좌표");
-		
-	}
-	public void down() {
-		coordinate.Down();
-		System.out.println(this.name+"의 좌표");
-	}
+		}
 	
+	public void down() {		
+		System.out.println(this.name+"의 좌표");
+		coordinate.Down();
+		}
 	
 	public void seeState(){//상태 보여주기
-		System.out.println(name+"의 HP가"+hp+", HIT이 "+hit+"입니다.");
+		System.out.println(name+"의 HP:"+hp+", HIT:"+hit+", "
+				+ "좌표 :("+coordinate.getX()+","+coordinate.getY()+")");
 		
 
 	}
 	public void Attack(Unit unit){//공격
 		if(coordinate.getDistance(unit.coordinate)<=5){
+			
 		if(unit.hp<=0){
 			this.isDead=true;
 			System.out.println(unit.name+"이 죽었습니다.");

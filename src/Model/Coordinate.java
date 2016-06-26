@@ -12,13 +12,13 @@ public class Coordinate {
 	public void Right(){
 		this.x = this.x;
 		this.y =this.y+1;
-		System.out.println(":"+x+","+y);
+		System.out.println(":"+x+","+y+"로 이동했습니다.");
 	}
 	
 	public void Down(){
 		this.x = this.x+1;
 		this.y =this.y;
-		System.out.println(":"+x+","+y);
+		System.out.println(":"+x+","+y+"로 이동했습니다.");
 	}
 	
 	public double getDistance(Coordinate target){//생성자
