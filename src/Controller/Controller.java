@@ -80,7 +80,8 @@ public class Controller {
 			}
 			break;
 			
-			case 4 :			
+			case 4 :
+				
 				System.out.println("이동할 Unit을 선택하세요");
 											
 				for(Unit unit : list) {					
@@ -90,20 +91,29 @@ public class Controller {
 				
 				int num2 = scanner.nextInt();
 				Unit unit=list.get(num2);
+							
+				boolean run = true;
+				while(run){
+					System.out.println("1.오른쪽으로 이동 2.아래로 이동");	
+					int num3 = scanner.nextInt();	
+					
+					switch(num3){
+					case 1 :
+						list.get(num2).right();
+						run = false;
+						break;
+					case 2 :
+						list.get(num2).down();
+						run = false;
+						break;			
+					default :
+						System.out.println("다시 선택하세요.");
+						break ;
+					}		
+				}
 				
-				System.out.println("1.오른쪽으로 이동 2.아래로 이동");	
-				
-				int num3 = scanner.nextInt();				
-				switch(num3){
-				case 1 :
-					list.get(num2).right();
-					break;
-				case 2 :
-					list.get(num2).down();
-					break;				
-					}
-				
-				break;			
+				break;
+							
 			case 5 :
 				System.out.println("업그레이드 할 Unit을 선택하세요");
 				for(Unit unit4 : list) {					
