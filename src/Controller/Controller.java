@@ -31,11 +31,11 @@ public class Controller {
 		
 		
 		while(true){
-			System.out.println("---------------------------------------------------");
-			System.out.println("1.마린생성 2.파이어뱃생성 3.현황");
-			System.out.println("4.위치변경 5.공격하기 6.공격력증가");
+			System.out.println("--------------------------------------");
+			System.out.println("1.마린생성 2.파이어뱃생성 3.현   황");
+			System.out.println("4.위치변경 5.공격력 증 가 6.공격하기");
 			System.out.println("(종료하려면 아무키나 누르세요.)");
-			System.out.println("---------------------------------------------------");
+			System.out.println("--------------------------------------");
 			
 			int num = scanner.nextInt();
 			
@@ -104,8 +104,21 @@ public class Controller {
 					}
 				
 				break;			
-				
 			case 5 :
+				System.out.println("업그레이드 할 Unit을 선택하세요");
+				for(Unit unit4 : list) {					
+					System.out.println(list.indexOf(unit4)+".");
+					unit4.seeState();
+				}
+				
+				int num6 = scanner.nextInt();
+				Unit unit4=list.get(num6);
+				
+				unit4.Upgrade();
+				
+				break;
+				
+			case 6 :
 				System.out.println("공격할 Unit을 선택하세요");
 				
 				for(Unit unit2 : list) {					
