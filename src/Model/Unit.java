@@ -49,31 +49,38 @@ public class Unit {
 		}
 	}
 	
-	
+	//공격 가능한지 판별해주는 함수
+	public boolean isAttackable(Unit unit){
+		
+		if(coordinate.getDistance(unit.coordinate)<=5){
+			return true;
+	}else
+		System.out.println("공격 가능한 거리가 아닙니다.");
+		return false;
+	}
 	
 	
 	public void Attack(Unit unit){//공격
-		if(coordinate.getDistance(unit.coordinate)<=5){
-			
-		if(unit.hp<=0){
-			this.isDead=true;
-			System.out.println(unit.name+"이 죽었습니다.");
-		}
-		else{
-			if(unit.hp<=0){
+		// if(isAttackable(unit)){
+
+		if (unit.hp <= 0) {
+			this.isDead = true;
+			System.out.println(unit.name + "이 죽었습니다.");
+		} else {
+			if (unit.hp <= 0) {
 				System.out.println("더이상 공격할 수 없습니다.");
 			}
-		System.out.println("\nunit ATTACK!");
-		unit.hp=unit.hp-this.hit;
-		
-		
-		System.out.println(this.name+"이 "+unit.name +"을 공격했습니다.");
+			System.out.println("\nunit ATTACK!");
+			unit.hp = unit.hp - this.hit;
+
+			System.out.println(this.name + "이 " + unit.name + "을 공격했습니다.");
 		}
-		
-		}else{
-			System.out.println("거리가 멀어 공격할 수 없습니다.");
-		}
+
 	}
+	// else{
+
+	// }
+	
 	
 	public void Upgrade(){//업그레이드!
 		System.out.println("\nUPGRADE!");

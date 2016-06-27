@@ -24,7 +24,7 @@ public class Controller {
 		//////제네릭//////리스튼데 마린을 담을꺼당
 		/////제네릭을 안쓰면, 어떤 타입이든 다 넣겠다!But, 명시해주는게 좋다!
 		List<Unit> list= new ArrayList<Unit>();
-		//List<Unit> attackableUnitList=new ArrayList<Unit>();
+		
 		
 		
 		Scanner scanner = new Scanner(System.in);
@@ -82,8 +82,7 @@ public class Controller {
 				}				
 				}
 			System.out.println("총 "+a+"마리가 있습니다.");
-			
-			
+						
 			break;
 			
 			case 4 :
@@ -135,29 +134,38 @@ public class Controller {
 				break;
 				
 			case 6 :
+				
 				System.out.println("공격할 Unit을 선택하세요");
-				
-				for(Unit unit2 : list) {					
-					System.out.println(list.indexOf(unit2)+".");
-					unit2.seeState();		
-				}
+				for(Unit selectedUnit : list) {					
+					System.out.println(list.indexOf(selectedUnit)+".");
+					selectedUnit.seeState();		
+				}			
+
 				int num4 = scanner.nextInt();
-				Unit unit2=list.get(num4);
-				
+				Unit selectedUnit=list.get(num4);
+								
 				System.out.println("공격할 대상을 선택하세요");
 				
-				for(Unit unit3 : list) {
-					
-					if(list.indexOf(unit3)!=num4){
-					System.out.println(list.indexOf(unit3)+".");
-					unit3.seeState();
+				List<Unit> attackableUnitList=new ArrayList<Unit>();
+				
+				for(Unit unit3 : list){
+					if(unit3 != selectedUnit && selectedUnit.isAttackable(unit3)){
+						attackableUnitList.add(unit3);
+						System.out.println(attackableUnitList.indexOf(unit3)+".");
+						unit3.seeState();
 					}
+					}
+				
+				
+				if (attackableUnitList.size() == 0) {
+					System.out.println("공격가능한 UNIT이 없습니다.");
+				} else {
+					int num5 = scanner.nextInt();
+					Unit attackUnit = attackableUnitList.get(num5);
+
+					selectedUnit.Attack(attackUnit);
 				}
-				int num5 = scanner.nextInt();
-				Unit unit3=list.get(num5);
-				
-				unit2.Attack(unit3);	
-				
+	
 				break;					
 				//누가 누구를 공격한다.
 				//좌표라는 개념을 넣는다.(0,0)~(100,100)
