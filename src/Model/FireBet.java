@@ -8,5 +8,8 @@ public class FireBet extends Unit {// Unit한테 상속되어서 Unit의 속성을 쓸 수 있
 		this.hit = hit;
 		this.name = name;
 	}
+	public void bark(){
+		System.out.println( "firebet!!");
+	}
 
 }

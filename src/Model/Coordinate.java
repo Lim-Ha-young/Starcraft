@@ -9,15 +9,15 @@ public class Coordinate {
 		this.y = 0;
 	}
 
-	public void Right() {
-		this.x = this.x;
+	public void goRight() {
+		
 		this.y = this.y + 1;
 		System.out.println(":" + x + "," + y + "로 이동했습니다.");
 	}
 
-	public void Down() {
+	public void goDown() {
 		this.x = this.x + 1;
-		this.y = this.y;
+		
 		System.out.println(":" + x + "," + y + "로 이동했습니다.");
 	}
 
@@ -27,7 +27,7 @@ public class Coordinate {
 		return Math.sqrt(Math.pow(xDiffer, 2) + Math.pow(yDiffer, 2));
 
 	}
-
+//getter, setter는 뒤에있는게 좋움.
 	public int getX() {
 		return x;
 	}

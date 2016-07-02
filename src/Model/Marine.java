@@ -8,6 +8,10 @@ public class Marine extends Unit {// Unit한테 상속되어서 Unit의 속성을 쓸 수 있�
 		this.hit = hit;
 		this.name = name;
 	}
+	
+	public void bark(){
+		System.out.println( "marine!!");
+	}
 
 	// 부모의 가지고 있는 속성을 다시 쓰는게 "재정의"
 	// 옆에 세모가 있으면 "재정의"

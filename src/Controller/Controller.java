@@ -9,6 +9,7 @@ import java.util.Scanner;
 import Model.FireBet;
 import Model.Marine;
 import Model.Unit;
+import listener.OnDiedListener;
 
 public class Controller {
 	public static void main(String[] args) {
@@ -24,9 +25,10 @@ public class Controller {
 		////// 제네릭//////리스튼데 마린을 담을꺼당
 		///// 제네릭을 안쓰면, 어떤 타입이든 다 넣겠다!But, 명시해주는게 좋다!
 		List<Unit> list = new ArrayList<Unit>();
-
 		Scanner scanner = new Scanner(System.in);
-
+		
+		
+		
 		while (true) {
 			System.out.println("--------------------------------------");
 			System.out.println("1.마린생성 2.파이어뱃생성 3.현   황");
@@ -46,8 +48,18 @@ public class Controller {
 				System.out.println("생성할 마린의 이름을 입력하세요 : ");
 				String mName = scanner.next();
 
+				
 				Marine m = new Marine(mHp, mHit, mName);
-
+				OnDiedListener onDiedListenerImp1 = new OnDiedListener(){
+					public void onDied(){
+						System.out.print(mName+"죽었습니다다다다다.");
+					}
+				};				
+				m.setOnDiedListener(onDiedListenerImp1);
+						
+					
+				
+				
 				System.out.println("마린이 생성되었습니다.\n");
 				list.add(m);
 				break;
@@ -77,6 +89,7 @@ public class Controller {
 						a++;
 					}
 				}
+				//걸러서 하는 것보다 list에서 뺀다. 모든 개발자가 들어왓을때 실수가없겡
 				System.out.println("총 " + a + "마리가 있습니다.");
 
 				break;
@@ -84,15 +97,16 @@ public class Controller {
 			case 4:
 
 				System.out.println("이동할 Unit을 선택하세요");
-
+				//
 				for (Unit unit : list) {
 					System.out.println(list.indexOf(unit) + ".");
 					unit.seeState();
 				}
-
+				
 				int num2 = scanner.nextInt();
 				Unit unit = list.get(num2);
-
+				//중복코드는 selectUnit으로 만들기
+				
 				boolean run = true;
 				while (run) {
 					System.out.println("1.오른쪽으로 이동 2.아래로 이동");
@@ -100,7 +114,7 @@ public class Controller {
 
 					switch (num3) {
 					case 1:
-						list.get(num2).right();
+						list.get(num2).right();//goRight으로 하깅
 						run = false;
 						break;
 					case 2:
@@ -126,7 +140,8 @@ public class Controller {
 				Unit unit4 = list.get(num6);
 
 				unit4.Upgrade();
-
+				//메소드를 따로빼서 새로운 스코프안에서 놀게하깅
+				
 				break;
 
 			case 6:
@@ -143,7 +158,8 @@ public class Controller {
 				System.out.println("공격할 대상을 선택하세요");
 
 				List<Unit> attackableUnitList = new ArrayList<Unit>();
-
+				
+				//list안에 죽은애들도잇다.
 				for (Unit unit3 : list) {
 					if (unit3 != selectedUnit && selectedUnit.isAttackable(unit3)) {
 						attackableUnitList.add(unit3);
@@ -156,9 +172,9 @@ public class Controller {
 					System.out.println("공격가능한 UNIT이 없습니다.");
 				} else {
 					int num5 = scanner.nextInt();
-					Unit attackUnit = attackableUnitList.get(num5);
-
-					selectedUnit.Attack(attackUnit);
+					Unit targetUnit = attackableUnitList.get(num5);
+					
+					selectedUnit.Attack(targetUnit);
 				}
 
 				break;
