@@ -6,6 +6,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
+import com.blog.naver.sens921119.MyModule;
+import com.kyh0209.Module;
+
 import Model.FireBet;
 import Model.Marine;
 import Model.Unit;
@@ -24,6 +27,13 @@ public class Controller {
 		// List<Marine> list2 = new LinkedList<Marine>();//링크드 리스트-삽입좋음
 		////// 제네릭//////리스튼데 마린을 담을꺼당
 		///// 제네릭을 안쓰면, 어떤 타입이든 다 넣겠다!But, 명시해주는게 좋다!
+		
+		Module m2 = new Module();
+		m2.run();
+		
+		MyModule m3 = new MyModule ();
+		m3.run();
+		
 		List<Unit> list = new ArrayList<Unit>();
 		Scanner scanner = new Scanner(System.in);
 		
