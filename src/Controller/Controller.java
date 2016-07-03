@@ -1,8 +1,7 @@
 package Controller;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.LinkedList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -35,9 +34,7 @@ public class Controller {
 		m3.run();
 		
 		List<Unit> list = new ArrayList<Unit>();
-		Scanner scanner = new Scanner(System.in);
-		
-		
+		Scanner scanner = new Scanner(System.in);				
 		
 		while (true) {
 			System.out.println("--------------------------------------");
@@ -50,14 +47,12 @@ public class Controller {
 
 			switch (num) {
 			case 1:
-
 				System.out.println("생성할 마린의 HP를 입력하세요 : ");
 				int mHp = scanner.nextInt();
 				System.out.println("생성할 마린의 HIT을 입력하세요 : ");
 				int mHit = scanner.nextInt();
 				System.out.println("생성할 마린의 이름을 입력하세요 : ");
 				String mName = scanner.next();
-
 				
 				Marine m = new Marine(mHp, mHit, mName);
 				OnDiedListener onDiedListenerImp1 = new OnDiedListener(){
@@ -65,10 +60,7 @@ public class Controller {
 						System.out.print(mName+"죽었습니다다다다다.");
 					}
 				};				
-				m.setOnDiedListener(onDiedListenerImp1);
-						
-					
-				
+				m.setOnDiedListener(onDiedListenerImp1);				
 				
 				System.out.println("마린이 생성되었습니다.\n");
 				list.add(m);
@@ -107,14 +99,23 @@ public class Controller {
 			case 4:
 
 				System.out.println("이동할 Unit을 선택하세요");
-				//
+				
 				for (Unit unit : list) {
 					System.out.println(list.indexOf(unit) + ".");
 					unit.seeState();
 				}
 				
-				int num2 = scanner.nextInt();
-				Unit unit = list.get(num2);
+				int num2 = 0;
+				try{
+					num2 = scanner.nextInt();
+					Unit unit = list.get(num2);
+					
+				} catch(InputMismatchException e){
+					System.out.println("잘못된 입력입니다.");
+					scanner.nextLine();
+					continue;
+				}
+				
 				//중복코드는 selectUnit으로 만들기
 				
 				boolean run = true;
@@ -188,11 +189,7 @@ public class Controller {
 				}
 
 				break;
-			// 누가 누구를 공격한다.
-			// 좌표라는 개념을 넣는다.(0,0)~(100,100)
-			// unit은 (0,0)에서 생성되고 어느 위치로 이동할 수 있다.
-			// 공격거리까지 계산가능.
-
+		
 			default:
 				System.out.println("종료합니다.");
 				return;
@@ -200,5 +197,10 @@ public class Controller {
 		}
 
 	}
+public void selectUnit(int a){
+		
+		
+	}
+
 
 }

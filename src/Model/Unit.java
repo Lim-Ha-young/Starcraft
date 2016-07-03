@@ -56,7 +56,7 @@ public abstract class Unit {// class도 abstract가 되어야한다.
 			System.out.println(name + "이 죽었습니다.");
 		}
 	}
-
+	
 	// 공격 가능한지 판별해주는 함수
 	public boolean isAttackable(Unit unit) {
 
