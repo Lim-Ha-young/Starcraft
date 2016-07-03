@@ -14,6 +14,9 @@ import Model.Unit;
 import listener.OnDiedListener;
 
 public class Controller {
+	static List <Unit> unitList = new ArrayList<Unit>();
+	static Scanner scanner= new Scanner(System.in);
+	
 	public static void main(String[] args) {
 
 		// 맨앞이 대문자가 아니면 "프리미티브"
@@ -100,44 +103,17 @@ public class Controller {
 
 				System.out.println("이동할 Unit을 선택하세요");
 				
-				for (Unit unit : list) {
+				selectUnit(list);
+				/*for (Unit unit : list) {
 					System.out.println(list.indexOf(unit) + ".");
 					unit.seeState();
-				}
+				}*/
 				
-				int num2 = 0;
-				try{
-					num2 = scanner.nextInt();
-					Unit unit = list.get(num2);
-					
-				} catch(InputMismatchException e){
-					System.out.println("잘못된 입력입니다.");
-					scanner.nextLine();
-					continue;
-				}
+				
 				
 				//중복코드는 selectUnit으로 만들기
 				
-				boolean run = true;
-				while (run) {
-					System.out.println("1.오른쪽으로 이동 2.아래로 이동");
-					int num3 = scanner.nextInt();
-
-					switch (num3) {
-					case 1:
-						list.get(num2).right();//goRight으로 하깅
-						run = false;
-						break;
-					case 2:
-						list.get(num2).down();
-						run = false;
-						break;
-					default:
-						System.out.println("다시 선택하세요.");
-						break;
-					}
-				}
-
+				
 				break;
 
 			case 5:
@@ -197,10 +173,45 @@ public class Controller {
 		}
 
 	}
-public void selectUnit(int a){
+	private static Unit selectUnit(List<Unit> list){
+		for(Unit unit: list){
+			System.out.println(list.indexOf(unit)+":");
+			unit.seeState();
+		}
+		int input = scanner.nextInt();
+		try{			
 		
+		Unit unit=list.get(input);
 		
+		}catch(InputMismatchException e){
+			System.out.println("잘못된 입력입니다.");
+			scanner.nextLine();
+			//continue;
+		}
+		boolean run = true;
+		while (run) {
+			System.out.println("1.오른쪽으로 이동 2.아래로 이동");
+			int num3 = scanner.nextInt();
+
+			switch (num3) {
+			case 1:
+				list.get(input).right();//goRight으로 하깅
+				run = false;
+				break;
+			case 2:
+				list.get(input).down();
+				run = false;
+				break;
+			default:
+				System.out.println("다시 선택하세요.");
+				break;
+			}
+		}
+
+		return null;
 	}
+	
+
 
 
 }
